@@ -9,8 +9,45 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic 
-    fluidPage(
-      h1("covidUFLA")
+    bs4Dash::dashboardPage(
+      controlbar = bs4Dash::dashboardControlbar(
+        skin = "light"
+      ),
+      
+      navbar = bs4Dash::dashboardHeader(
+        rightUi = auth0::logoutButton(icon = icon("sign-out-alt"))
+      ),
+      
+      sidebar = bs4Dash::dashboardSidebar(
+        skin = "light",
+        title = "{covidUFLA}",
+        bs4Dash::bs4SidebarMenu(
+          bs4Dash::bs4SidebarMenuItem(
+            "Principal",
+            tabName = "principal",
+            icon = "globe"
+          )
+        )
+      ),
+      
+      body = bs4Dash::dashboardBody(
+        # fresh::use_theme(create_theme_css()),
+        bs4Dash::bs4TabItems(
+          bs4Dash::bs4TabItem(
+            tabName = "principal",
+            mod_principal_ui("principal_ui_1")
+          )
+        )
+      ),
+      
+      footer = bs4Dash::dashboardFooter(
+        copyrights = a(
+          href = "https://curso-r.com",
+          target = "_blank", "Curso-R"
+        ),
+        right_text = "2021 | desenvolvido com <3 para a UFLA"
+      )
+      
     )
   )
 }

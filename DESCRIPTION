@@ -7,7 +7,11 @@ License: What license is it under?
 Imports: 
     config (>= 0.3.1),
     golem (>= 0.3.0),
-    shiny (>= 1.5.0)
+    shiny (>= 1.5.0),
+    htmltools,
+    pkgload
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
+Depends: 
+    R (>= 2.10)
